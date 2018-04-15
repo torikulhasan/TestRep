@@ -1,0 +1,285 @@
+git --version
+git status
+git add filename
+git add .
+git config --global user.name "userName"
+git config --global user.email "email@domain.com"
+git commit -m "message"
+git log
+git checkout filename
+git reset HEAD filenames
+git rm filename
+git checkout hexcodeOfaPointOfChange
+git branch
+git checkout branchName
+git branch branchName branchID
+git branch branchName
+git merge branchName
+git branch -m branchName newBranchName
+git branch -D branchName
+git config --list
+git config user.name
+git config user.email
+cd ~
+cat .gitconfig
+git config --global core.editor "editorName"
+git config --global color.ui true
+git help
+git help log
+git help command
+man git-log -------unix system
+git init
+git log -n 0
+git log -n 2
+git log --since="2018-03-26"
+git log --since="yyyy-mm-dd"
+git log --until=2018-03-26
+git log --until=yyyy-mm-dd
+git log --author="Hasan"
+git log --author="Bhuyan"
+git log --grep="revision"
+git log --grep="word to find in message"
+repository---staging index--working=========Three-tree architecture
+cd .git
+cat HEAD
+cd .git/refs/heads
+cat master
+git log
+git status
+git diff
+git diff --staged
+git diff --cached
+git mv filename newfilename
+git diff fileName
+git diff --color-words filename
+git commit -a
+git reset HEAD filename
+git commit --amend -m "message"
+git checkout checksum -- filename
+git revert SHA_Checksum
+git reset --soft  SHA_checksum
+git reset --mixed
+git reset --hard
+git reset HEAD fileName
+git clean -n
+git clean -f
+nano .gitignore    [*.log--log file ignore, assets/video/---video folder ignored, !asset/video/tour_*.mp4--- tracked
+git rm --cached fileName
+git add .gitignore
+git add /directory/dir/.gitkeep
+tree-ish
+HEAD pointer
+branch reference, tag reference
+
+------parent commit
+HEAD^, acf87504^, master^ 
+HEAD~1, HEAD~
+grandpparent commit
+HEAD^^, acf87504^^, mmaster^^
+HEAD~2
+great-grandparent commit
+HEAD^^^, ACF87504^^^, master^^^
+HEAD~3
+git help ls-tree
+git ls-tree HEAD
+git ls-tree master
+git ls-tree master assets/
+git ls-tree master^ assets/
+git log --oneline
+git help log
+git log --oneline -3
+git log --since="2 weeks ago" --until="3 days ago"
+git log --since=2.weeks --until=3.days
+git log --oneline
+git log adbc1ff..a1b8d78 --oneline
+git log adbc1ff..a1b8d78 --oneline --grep=temp
+git log abdc1ff.. index.html
+git log -p abdc1ff.. index.html
+git log --stat --summary
+git log --format=oneline
+git log --format=short
+git log --format=medium
+git log --format=full
+git log --format=fuller
+git log --format=email
+fgit log --format=raw
+git log --graph
+git log --oneline --graph --all --decorate
+git show shcode
+git show --format=oneline HEAD
+git show --format=oneline HEAD~3
+git help show
+git cehckout -b
+git commit -am "add and commit in same command"
+git diff master..new_feature
+git diff master..short_title
+git diff short_title..new_feature
+git diff --color-words short_title..new_feature
+git diff --color-words new_feature..shorten_title^
+git branch --merged
+git branch -m nwe_featue seo_title
+git branch branch_to_delete
+git branch -d branch_to_delete
+git branch branch_to_delete
+git checkout branch_to_delete
+git branch -d branch_to_delete-----cannot delete because we are in the same branch that want to delete
+git branch -D branch_to_delete-----will remove even if something commited in that branch forecefully
+
+echo $PS1
+export PS1='$(__git_ps1 "(%s)") > '
+export PS1='\W$(__git_ps1 "(%s)") > '
+
+
+-------------nano .bash_profile------in linux----
+#export PS1="Hasan$ "
+alias ll='ls -lahG'
+
+if [ -f ~/.git-completion.bash ]; then
+	source ~/.git-completion.bash
+	export PS1='\W$(__git_ps1 "(%s)") > '
+fi
+
+-----------end .bash_profile------
+
+-------for windows----
+create .bash_profile file and save as all fill type.
+write this command to that file and save
+-----export PS1='\W$(__git_ps1 "(%s)") > '
+
+git merge branch_name
+git log seo_title --oneline -3
+git merge --no-ff branch
+git merge --ff-only branch
+git checkout -b new_branch
+git merge --abort
+
+--- abort merge, manually resolve the conflicts, tool
+git mergetool
+git stash save "Comment"
+git stash list
+git stash show stash@{0}
+git stash show -p stash@{0}
+git stash pop stash@{0}
+git stash apply
+git stash drop stash@{0}
+git stash clear
+
+git remote
+git remote add origin https://github.com/torikulhasan/explore_california.git
+git remote
+cat .git/config
+git remove rm origin
+
+git push -u origin master
+git push -f origin master
+cat .git/config
+ls -la .git/refs/remotes/origin/master
+cat .git/refs/remotes/origin/master
+git clone https://github.com/torikulhasan/explore_california.git lynda_version
+cd lynda_version
+git push origin non_tracking--------will not track this branch
+git branch --set-upstream non_trackin origin/non_tracking------to make non tracking branch to track
+git diff origin/master..master
+git push ---automatically push the tracked branch
+git branch -r
+git branch -a
+git fetch origin
+git fetch ---only one is configured so it will work
+
+fetch before you start work
+fetch before you push
+fetch often
+
+git merge origin/master
+git pull = git fetch + git merge
+git branch non_tracking origin/non_tracking
+git push origin :non_tracking
+git push origin --delete non_tracking
+add collaborators to contribute to the project using different github account
+
+for opensource project---fork to have you own copy in git repository--work on --then pull request with reason /fix/how you did it etc---then they will check and if feel good will incorporate to the original project /
+
+---------==========----------====flow of collaborative work on a project==========--------
+create a new feedback form in explore_california project
+
+(1) My work
+---
+git checkout master
+git fetch
+git merge origin/master
+git checkout -b feedback_form
+git add feedback.html
+git commit -m "Add customer feedback form"
+git fetch
+git push -u origin feedback_form
+
+send a email to Lynda to check my work and contribute
+
+(2) Lynda's work
+---
+git checkout master
+git fetch
+git merge origin/master
+git checkout -b feedback_form origin/feedback_form
+git log
+git show 84b6adf0
+git commit -am "Add tour selecor to feedback form"
+git fetch
+git push
+
+send a email to me that she has changed something minor etc.
+
+(3) My work
+---
+git fetch
+git log -p feedback_form..origin/feedback_form
+git merge origin/feedback_form
+git checkout master
+git fetch
+git merge origin/master
+git merge feedback_form
+git push
+
+
+===========-------=============--------------=============
+
+git config --global alias.st "status"
+cd
+cat .gitconfig
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.df diff
+git config --global alias.df "diff --staged"
+git config --global alias.logg "log --graph --decorate --oneline --abbrev-commit --all"
+
+http://help.github.com/articles/set-up-git
+password caching
+generatign ssh keys
+
+git intetration available with these ides/editors.
+Vim
+Emacs
+Textmate
+Eclipse
+Netbeans
+Visual studio
+IntelliJ
+RubyMine
+PHPStorm
+
+graphical user interfaces of git 
+GitWeb
+https://git.wiki.kernel.org/index.php/Gitweb
+
+Git hosting
+------------
+github.com
+bitbucket.org
+gitorious.org
+
+Git Self_hosting
+-----------
+Gitosis--stopped developement
+Gitolite--stopped development
+Gitlab
